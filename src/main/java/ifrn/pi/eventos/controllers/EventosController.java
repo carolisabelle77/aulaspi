@@ -1,14 +1,22 @@
 package ifrn.pi.eventos.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
 import ifrn.pi.eventos.models.Evento;
+import ifrn.pi.eventos.repositories.EventoRepository;
 
 @Controller
 @RequestMapping("/eventos")
 public class EventosController {
+
+    @Autowired
+    private EventoRepository er;
 
     @GetMapping("/form")
     public String form() {
@@ -17,14 +25,16 @@ public class EventosController {
 
     @PostMapping("/form")
     public String salvar(Evento evento) {
-        System.out.println("----- DADOS DO EVENTO RECEBIDO -----");
-        System.out.println("Nome do Evento: " + evento.getNome());
-        System.out.println("Local Realização: " + evento.getLocal());
-        System.out.println("Data: " + evento.getData());
-        System.out.println("Horário: " + evento.getHorario());
-        System.out.println("------------------------------------");
-        
-        return "redirect:/eventos/form";
+        er.save(evento);
+        return "redirect:/";
+    }
+
+    @GetMapping("/{id}")
+    public ModelAndView detalhesEvento(@PathVariable("id") Long id) {
+        Evento evento = er.findById(id).orElse(null);
+        ModelAndView mv = new ModelAndView("detalhesEvento");
+        mv.addObject("evento", evento);
+        return mv;
     }
 }
 
