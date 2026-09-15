@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
 
@@ -19,6 +20,7 @@
 
     <div class="row">
         <div class="col s12">
+
             <div class="card blue-grey">
                 <div class="card-content white-text">
 
@@ -45,6 +47,75 @@
 
                 </div>
             </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col s12">
+
+            <div class="card">
+                <div class="card-content">
+
+                    <span class="card-title">Adicionar Convidado:</span>
+
+                    <form method="post">
+
+                        <label>Nome: </label>
+                        <input type="text" name="nome">
+
+                        <label>RG: </label>
+                        <input type="text" name="rg">
+
+                        <button class="waves-effect waves-light btn"
+                                type="submit">
+                            Adicionar
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col s12">
+
+            <div class="card">
+                <div class="card-content">
+
+                    <span class="card-title">Convidados:</span>
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>RG</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr th:each="convidado : ${evento.convidados}">
+
+                                <td th:text="${convidado.nome}"></td>
+
+                                <td th:text="${convidado.rg}"></td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+
         </div>
     </div>
 
