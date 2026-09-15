@@ -1,5 +1,6 @@
 package ifrn.pi.eventos.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -20,8 +21,8 @@ public class Evento {
     private String data;
     private String horario;
 
-    @OneToMany
-    private List<Convidado> convidados;
+    @OneToMany(mappedBy = "evento")
+    private List<Convidado> convidados = new ArrayList<>();
 
     public Long getId() {
         return id;
