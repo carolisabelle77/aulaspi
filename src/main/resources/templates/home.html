@@ -1,78 +1,64 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
+
     <meta charset="UTF-8">
-    <title>Eventos - Home</title>
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
+    <title>Eventos</title>
+
 </head>
 
 <body>
 
-    <nav class="blue darken-4">
-        <div class="nav-wrapper container">
-            <a href="/" class="brand-logo">Gestão de Eventos</a>
+<div th:replace="~{menu :: menu}"></div>
 
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li>
-                    <a href="/eventos/form"
-                       class="waves-effect waves-light btn green">
-                        <i class="material-icons left">add</i>
-                        Cadastrar Evento
+<div class="container">
+
+    <h1>Lista de eventos</h1>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Local</th>
+                <th>Data</th>
+                <th>Horário</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr th:each="evento : ${eventos}">
+
+                <td th:text="${evento.id}"></td>
+
+                <td>
+                    <a th:href="@{/eventos/{id}(id=${evento.id})}"
+                       th:text="${evento.nome}">
                     </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+                </td>
 
-    <div class="container" style="margin-top: 30px;">
+                <td th:text="${evento.local}"></td>
 
-        <h3>Eventos Cadastrados</h3>
+                <td th:text="${evento.data}"></td>
 
-        <table class="striped highlight responsive-table">
+                <td th:text="${evento.horario}"></td>
 
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Local</th>
-                    <th>Data</th>
-                    <th>Horário</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
+            </tr>
 
-            <tbody>
+        </tbody>
 
-                <tr th:each="evento : ${eventos}">
+    </table>
 
-                    <td th:text="${evento.nome}"></td>
-                    <td th:text="${evento.local}"></td>
-                    <td th:text="${evento.data}"></td>
-                    <td th:text="${evento.horario}"></td>
-
-                    <td>
-                        <a th:href="@{/eventos/{id}(id=${evento.id})}"
-                           class="btn-small waves-effect waves-light blue">
-
-                            <i class="material-icons left">search</i>
-                            Detalhes
-
-                        </a>
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</div>
 
 </body>
 </html>

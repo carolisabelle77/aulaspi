@@ -1,41 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Eventos</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <title>Formulário de Evento</title>
 </head>
 <body>
 
+<div th:replace="~{menu :: menu}"></div>
+
+<div class="container">
     <h1>Adicionar Evento</h1>
-    
-    <form action="/eventos/form" method="POST">
-    
+
+    <form class="container" method="post">
+
         <div>
-            <label>Nome:</label>
+            <label>Nome: </label>
             <input type="text" name="nome">
         </div>
-        
+
         <div>
-            <label>Local:</label>
+            <label>Local: </label>
             <input type="text" name="local">
         </div>
-        
+
         <div>
-            <label>Data:</label>
+            <label>Data: </label>
             <input type="text" name="data">
         </div>
-        
+
         <div>
-            <label>Horário:</label>
+            <label>Horário: </label>
             <input type="text" name="horario">
         </div>
-        
-        <div>
-            <button type="submit">Salvar</button>
-            <button type="reset">Limpar</button>
-        </div>
-        
+
+        <button class="waves-effect waves-light btn" type="submit">
+            Adicionar
+        </button>
+
     </form>
+</div>
 
 </body>
 </html>

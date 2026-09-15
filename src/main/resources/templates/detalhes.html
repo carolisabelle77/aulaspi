@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <title>Detalhes do Evento</title>
+</head>
+
+<body>
+
+<div th:replace="~{menu :: menu}"></div>
+
+<div class="container">
+
+    <h1>Detalhes do evento</h1>
+
+    <div class="row">
+        <div class="col s12">
+            <div class="card blue-grey">
+                <div class="card-content white-text">
+
+                    <span class="card-title">Evento</span>
+
+                    <b>Id:</b>
+                    <span th:text="${evento.id}"></span>
+                    <br>
+
+                    <b>Nome:</b>
+                    <span th:text="${evento.nome}"></span>
+                    <br>
+
+                    <b>Local:</b>
+                    <span th:text="${evento.local}"></span>
+                    <br>
+
+                    <b>Data:</b>
+                    <span th:text="${evento.data}"></span>
+                    <br>
+
+                    <b>Horário:</b>
+                    <span th:text="${evento.horario}"></span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

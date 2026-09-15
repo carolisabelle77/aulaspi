@@ -31,10 +31,12 @@ public class EventosController {
 
     @GetMapping("/{id}")
     public ModelAndView detalhesEvento(@PathVariable("id") Long id) {
+
         Evento evento = er.findById(id).orElse(null);
-        ModelAndView mv = new ModelAndView("detalhesEvento");
+
+        ModelAndView mv = new ModelAndView("detalhes");
         mv.addObject("evento", evento);
+
         return mv;
     }
 }
-

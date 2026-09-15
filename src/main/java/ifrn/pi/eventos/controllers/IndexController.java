@@ -1,10 +1,11 @@
 package ifrn.pi.eventos.controllers;
 
-import ifrn.pi.eventos.repositories.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import ifrn.pi.eventos.repositories.EventoRepository;
 
 @Controller
 public class IndexController {
@@ -14,8 +15,10 @@ public class IndexController {
 
     @GetMapping("/")
     public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("home"); // Abre a sua página home.html
-        mv.addObject("eventos", er.findAll()); // Busca os eventos do MySQL Workbench
+
+        ModelAndView mv = new ModelAndView("home");
+        mv.addObject("eventos", er.findAll());
+
         return mv;
     }
 }
