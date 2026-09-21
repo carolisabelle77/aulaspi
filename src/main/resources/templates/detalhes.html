@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <title>Detalhes do Evento</title>
 </head>
-
 <body>
 
 <div th:replace="~{menu :: menu}"></div>
@@ -18,108 +16,65 @@
 
     <h1>Detalhes do evento</h1>
 
-    <!-- Dados do evento -->
-
     <div class="row">
         <div class="col s12">
-
             <div class="card blue-grey">
                 <div class="card-content white-text">
-
                     <span class="card-title">Evento</span>
-
-                    <b>Id:</b>
-                    <span th:text="${evento.id}"></span>
-                    <br>
-
-                    <b>Nome:</b>
-                    <span th:text="${evento.nome}"></span>
-                    <br>
-
-                    <b>Local:</b>
-                    <span th:text="${evento.local}"></span>
-                    <br>
-
-                    <b>Data:</b>
-                    <span th:text="${evento.data}"></span>
-                    <br>
-
-                    <b>Horário:</b>
-                    <span th:text="${evento.horario}"></span>
-
+                    <b>Id:</b> <span th:text="${evento.id}"></span><br>
+                    <b>Nome:</b> <span th:text="${evento.nome}"></span><br>
+                    <b>Local:</b> <span th:text="${evento.local}"></span><br>
+                    <b>Data:</b> <span th:text="${evento.data}"></span><br>
+                    <b>Horário:</b> <span th:text="${evento.horario}"></span>
                 </div>
             </div>
-
         </div>
     </div>
 
-
-    <!-- Adicionar convidado -->
-
     <div class="row">
         <div class="col s12">
-
             <div class="card">
                 <div class="card-content">
-
                     <span class="card-title">Adicionar Convidado:</span>
-
                     <form method="post">
-
                         <label>Nome: </label>
                         <input type="text" name="nome">
-
                         <label>RG: </label>
                         <input type="text" name="rg">
-
-                        <button class="waves-effect waves-light btn"
-                                type="submit">
-                            Adicionar
-                        </button>
-
+                        <button class="waves-effect waves-light btn" type="submit">Adicionar</button>
                     </form>
-
                 </div>
             </div>
-
         </div>
     </div>
 
-
-    <!-- Lista de convidados -->
-
     <div class="row">
         <div class="col s12">
-
             <div class="card">
                 <div class="card-content">
-
                     <span class="card-title">Convidados:</span>
-
-                    <table>
+                    <table class="highlight">
                         <thead>
                             <tr>
                                 <th>Nome</th>
                                 <th>RG</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
-
                         <tbody>
-
-                            <tr th:each="convidado : ${evento.convidados}">
-
+                            <tr th:each="convidado : ${convidados}">
                                 <td th:text="${convidado.nome}"></td>
-
                                 <td th:text="${convidado.rg}"></td>
-
+                                <td>
+                                    <a th:href="@{/eventos/{idEvento}/convidados/{idConvidado}/remover(idEvento=${evento.id}, idConvidado=${convidado.id})}">
+                                        <i class="material-icons blue-text">delete</i>
+                                    </a>
+                                </td>
                             </tr>
-
                         </tbody>
                     </table>
-
                 </div>
             </div>
-
         </div>
     </div>
 

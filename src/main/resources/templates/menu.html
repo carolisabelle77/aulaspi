@@ -1,43 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <title>Eventos</title>
-</head>
 
+    <style>
+        nav {
+            background-color: #ee6e73 !important;
+        }
+    </style>
+</head>
 <body>
 
 <div th:fragment="menu">
-
-    <nav class="red lighten-1">
+    <nav>
         <div class="nav-wrapper container">
-
-            <a href="/" class="brand-logo">
-                Sistema de Eventos
-            </a>
+            <a href="/eventos" class="brand-logo">Sistema de Eventos</a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-
-                <li>
-                    <a href="/">Home</a>
-                </li>
-
-                <li>
-                    <a href="/eventos/form">
-                        Adicionar Evento
-                    </a>
-                </li>
-
+                <li><a href="/eventos">Home</a></li>
+                <li><a href="/eventos/form">Adicionar Evento</a></li>
             </ul>
-
         </div>
     </nav>
-
 </div>
 
 </body>
