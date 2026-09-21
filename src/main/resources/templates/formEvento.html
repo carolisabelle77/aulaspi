@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <title>Formulário de Evento</title>
 </head>
@@ -13,32 +13,34 @@
 <div th:replace="~{menu :: menu}"></div>
 
 <div class="container">
-    <h1>Adicionar Evento</h1>
+    <h1>Adicionar/Editar Evento</h1>
 
-    <form class="container" method="post">
+    <form class="container" action="/eventos" method="post">
+
+        <input type="hidden" name="id" th:value="${evento?.id}">
 
         <div>
             <label>Nome: </label>
-            <input type="text" name="nome">
+            <input type="text" name="nome" th:value="${evento?.nome}">
         </div>
 
         <div>
             <label>Local: </label>
-            <input type="text" name="local">
+            <input type="text" name="local" th:value="${evento?.local}">
         </div>
 
         <div>
             <label>Data: </label>
-            <input type="text" name="data">
+            <input type="text" name="data" th:value="${evento?.data}">
         </div>
 
         <div>
             <label>Horário: </label>
-            <input type="text" name="horario">
+            <input type="text" name="horario" th:value="${evento?.horario}">
         </div>
 
         <button class="waves-effect waves-light btn" type="submit">
-            Adicionar
+            Salvar
         </button>
 
     </form>
