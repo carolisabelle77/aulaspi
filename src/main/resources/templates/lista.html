@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <title>Eventos</title>
 </head>
+
 <body>
 
 <div th:replace="~{menu :: menu}"></div>
 
 <div class="container">
 
+    <!-- MENSAGEM DE SUCESSO -->
+    <div th:if="${mensagem}"
+         class="card-panel green lighten-4 green-text text-darken-4">
+
+        <span th:text="${mensagem}"></span>
+
+    </div>
+
     <h1>Lista de eventos</h1>
 
-    <table class="highlight">
+    <table>
+
         <thead>
+
             <tr>
                 <th>Id</th>
                 <th>Nome</th>
@@ -26,30 +41,51 @@
                 <th>Horário</th>
                 <th>Ações</th>
             </tr>
+
         </thead>
 
         <tbody>
+
             <tr th:each="evento : ${eventos}">
+
                 <td th:text="${evento.id}"></td>
+
                 <td>
-                    <a th:href="@{/eventos/{id}(id=${evento.id})}" th:text="${evento.nome}"></a>
+                    <a th:href="@{/eventos/{id}(id=${evento.id})}"
+                       th:text="${evento.nome}">
+                    </a>
                 </td>
+
                 <td th:text="${evento.local}"></td>
+
                 <td th:text="${evento.data}"></td>
+
                 <td th:text="${evento.horario}"></td>
+
                 <td>
+
                     <a th:href="@{/eventos/{id}/selecionar(id=${evento.id})}">
-                        <i class="material-icons orange-text">edit</i>
+                        <i class="material-icons blue-text">
+                            edit
+                        </i>
                     </a>
+
                     <a th:href="@{/eventos/{id}/remover(id=${evento.id})}">
-                        <i class="material-icons red-text">delete</i>
+                        <i class="material-icons blue-text">
+                            delete
+                        </i>
                     </a>
+
                 </td>
+
             </tr>
+
         </tbody>
+
     </table>
 
 </div>
 
 </body>
+
 </html>

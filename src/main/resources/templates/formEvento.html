@@ -1,50 +1,101 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <title>Formulário de Evento</title>
 </head>
+
 <body>
 
 <div th:replace="~{menu :: menu}"></div>
 
 <div class="container">
+
     <h1>Adicionar/Editar Evento</h1>
 
-    <form class="container" action="/eventos" method="post">
+    <form class="container"
+          action="/eventos"
+          method="post"
+          th:object="${evento}">
 
-        <input type="hidden" name="id" th:value="${evento?.id}">
+        <input type="hidden"
+               th:field="*{id}">
 
         <div>
-            <label>Nome: </label>
-            <input type="text" name="nome" th:value="${evento?.nome}">
+
+            <label>Nome:</label>
+
+            <input type="text"
+                   th:field="*{nome}">
+
+            <p class="red-text"
+               th:if="${#fields.hasErrors('nome')}"
+               th:errors="*{nome}">
+            </p>
+
         </div>
 
         <div>
-            <label>Local: </label>
-            <input type="text" name="local" th:value="${evento?.local}">
+
+            <label>Local:</label>
+
+            <input type="text"
+                   th:field="*{local}">
+
+            <p class="red-text"
+               th:if="${#fields.hasErrors('local')}"
+               th:errors="*{local}">
+            </p>
+
         </div>
 
         <div>
-            <label>Data: </label>
-            <input type="text" name="data" th:value="${evento?.data}">
+
+            <label>Data:</label>
+
+            <input type="date"
+                   th:field="*{data}">
+
+            <p class="red-text"
+               th:if="${#fields.hasErrors('data')}"
+               th:errors="*{data}">
+            </p>
+
         </div>
 
         <div>
-            <label>Horário: </label>
-            <input type="text" name="horario" th:value="${evento?.horario}">
+
+            <label>Horário:</label>
+
+            <input type="time"
+                   th:field="*{horario}">
+
+            <p class="red-text"
+               th:if="${#fields.hasErrors('horario')}"
+               th:errors="*{horario}">
+            </p>
+
         </div>
 
-        <button class="waves-effect waves-light btn" type="submit">
+        <button class="waves-effect waves-light btn"
+                type="submit">
+
             Salvar
+
         </button>
 
     </form>
+
 </div>
 
 </body>
+
 </html>

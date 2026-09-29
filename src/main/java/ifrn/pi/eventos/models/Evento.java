@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Evento {
@@ -16,9 +17,16 @@ public class Evento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "O nome do evento é obrigatório")
     private String nome;
+
+    @NotBlank(message = "O local do evento é obrigatório")
     private String local;
+
+    @NotBlank(message = "A data do evento é obrigatória")
     private String data;
+
+    @NotBlank(message = "O horário do evento é obrigatório")
     private String horario;
 
     @OneToMany(mappedBy = "evento")
